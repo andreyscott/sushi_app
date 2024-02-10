@@ -59,8 +59,8 @@ class IntroScreen extends StatelessWidget {
               MyButton(
                 text: "Get Started",
                 onTap: () {
-
-                  go to the main
+                  // go to the main
+                  Navigator.pushNamed(context, '/menupage');
                 },
               )
             ],
