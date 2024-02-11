@@ -8,14 +8,13 @@ import 'package:google_fonts/google_fonts.dart';
 
 class FoodTile extends StatelessWidget {
   final Food food;
-  const FoodTile({
-    super.key,
-    required this.food,
-  });
+  final void Function()? onTap;
+  const FoodTile({super.key, required this.food, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
+      onTap: onTap,
       child: Container(
         decoration: BoxDecoration(
           color: Colors.grey[100],

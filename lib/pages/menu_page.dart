@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:sushi_app/components/button.dart';
 import 'package:sushi_app/components/food_tile.dart';
 import 'package:sushi_app/models/food.dart';
+import 'package:sushi_app/pages/food_details.dart';
 import 'package:sushi_app/themes/colors.dart';
 
 class MenuPage extends StatefulWidget {
@@ -35,6 +36,17 @@ class _MenuPageState extends State<MenuPage> {
         rating: 4.8,
         description: "A bowl of ramen noodles with pork, egg, and vegetables."),
   ];
+
+  void navigateToFoodDetials(int index) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => FoodDetails(
+          food: foodMenu[index],
+        ),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -130,8 +142,10 @@ class _MenuPageState extends State<MenuPage> {
 
           Expanded(
             child: ListView.builder(
-                itemBuilder: (context, index) =>
-                    FoodTile(food: foodMenu[index]),
+                itemBuilder: (context, index) => FoodTile(
+                      food: foodMenu[index],
+                      onTap: () => navigateToFoodDetials(index),
+                    ),
                 itemCount: foodMenu.length,
                 scrollDirection: Axis.horizontal,
                 padding: const EdgeInsets.symmetric(horizontal: 25)),
