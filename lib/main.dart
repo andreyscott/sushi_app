@@ -13,9 +13,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: IntroScreen(),
+      home: const IntroScreen(),
       routes: {
-        '/intropage': (context) => IntroScreen(),
+        // '/intropage': (context) => IntroScreen(),s
         '/menupage': (context) => const MenuPage()
       },
     );
