@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'package:sushi_app/components/button.dart';
 import 'package:sushi_app/models/food.dart';
+import 'package:sushi_app/models/shop.dart';
 import 'package:sushi_app/themes/colors.dart';
 
 class FoodDetails extends StatefulWidget {
@@ -32,11 +34,41 @@ class _FoodDetails extends State<FoodDetails> {
     });
   }
 
+  void addToCart() {
+    if (quantityCount > 0) {
+      final shop = context.read<Shop>();
+
+      shop.addToCart(widget.food, quantityCount);
+
+      // leting the user know it's sucessful
+      showDialog(
+          context: context,
+          builder: (context) => AlertDialog(
+                backgroundColor: primaryColor,
+                content: const Text(
+                  "Successfully added to cart",
+                  style: TextStyle(color: Colors.white),
+                ),
+                actions: [
+                  IconButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                      Navigator.pop(context);
+                    },
+                    icon: const Icon(
+                      Icons.done,
+                      color: Colors.white,
+                    ),
+                  )
+                ],
+              ));
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('content'),
         backgroundColor: Colors.transparent,
         foregroundColor: Colors.grey[900],
         elevation: 0,
@@ -115,8 +147,8 @@ class _FoodDetails extends State<FoodDetails> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    '\$' '${widget.food.price}',
-                    style: TextStyle(
+                    '\$' '${widget.food.price * quantityCount}',
+                    style: const TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
                       fontSize: 18,
@@ -166,7 +198,7 @@ class _FoodDetails extends State<FoodDetails> {
               const SizedBox(
                 height: 25,
               ),
-              MyButton(text: "Add to Cart", onTap: () {})
+              MyButton(text: "Add to Cart", onTap: addToCart)
             ],
           ),
         )

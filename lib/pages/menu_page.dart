@@ -3,7 +3,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:sushi_app/components/button.dart';
 import 'package:sushi_app/components/food_tile.dart';
-import 'package:sushi_app/models/food.dart';
 import 'package:sushi_app/models/shop.dart';
 import 'package:sushi_app/pages/food_details.dart';
 import 'package:sushi_app/themes/colors.dart';
@@ -36,17 +35,25 @@ class _MenuPageState extends State<MenuPage> {
     return Scaffold(
       backgroundColor: Colors.grey[300],
       appBar: AppBar(
-          centerTitle: true,
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-          leading: const Icon(
-            Icons.menu,
-            color: Colors.black,
-          ),
-          title: const Text(
-            'Shibuya',
-            style: TextStyle(color: Colors.black),
-          )),
+        centerTitle: true,
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        leading: const Icon(
+          Icons.menu,
+          color: Colors.black,
+        ),
+        title: const Text(
+          'Shibuya',
+          style: TextStyle(color: Colors.black),
+        ),
+        actions: [
+          IconButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/cart');
+              },
+              icon: const Icon(Icons.shopping_cart))
+        ],
+      ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

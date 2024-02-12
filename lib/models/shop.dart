@@ -26,7 +26,7 @@ class Shop extends ChangeNotifier {
             "A bowl of tasty ramen noodles with pork, egg, and vegetables. Slurp your way through our comforting ramen broths, simmered for hours and bursting with umami. Choose from classic shoyu to adventurous tantan, each customizable with an array of toppings."),
   ];
 
-  List<Food> _cart = [];
+  final List<Food> _cart = [];
 
   List<Food> get foodMenu => _foodMenu;
   List<Food> get cart => _cart;
