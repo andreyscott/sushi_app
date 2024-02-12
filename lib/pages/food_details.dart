@@ -136,13 +136,15 @@ class _FoodDetails extends State<FoodDetails> {
                           )),
 
                       SizedBox(
-                        width: 30,
-                        child: Text(
-                          quantityCount.toString(),
-                          style: const TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 18),
+                        width: 35,
+                        child: Center(
+                          child: Text(
+                            quantityCount.toString(),
+                            style: const TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18),
+                          ),
                         ),
                       ),
                       // plus button
