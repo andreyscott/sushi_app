@@ -25,7 +25,7 @@ class MyButton extends StatelessWidget {
                 style: const TextStyle(color: Colors.white),
               ),
               const SizedBox(
-                width: 10,
+                width: 15,
               ),
               const Icon(
                 Icons.arrow_forward,
